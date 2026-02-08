@@ -4,23 +4,25 @@
 
 ---
 
-## 📖 Overview
+## 📌 Project Overview
 
-This project demonstrates how to deliver content globally using **Amazon CloudFront**, AWS’s Content Delivery Network (CDN).
+This project demonstrates how to deliver content globally using **Amazon CloudFront**, a Content Delivery Network (CDN) service from AWS.
 
-I built a simple architecture where an image stored in **Amazon S3** is delivered through CloudFront’s global edge locations for faster performance, lower latency, and secure origin access.
+In this lab, I created a CloudFront distribution connected to an Amazon S3 bucket and used it to deliver an image through CloudFront’s global edge locations. This simulates how companies make websites and media load faster for users around the world.
 
-This simulates how real companies accelerate websites, media platforms, and static web applications for users worldwide.
+This project focuses on performance, scalability, and real-world cloud architecture basics.
 
 ---
 
-## 🎯 What This Project Shows
+## 🎯 Objectives
 
-* Understanding of CDN architecture
-* Hands-on experience with AWS CloudFront
-* Integration between S3 and CloudFront
-* Performance optimization using caching
-* Secure origin configuration
+By completing this lab, I learned how to:
+
+* Create an Amazon S3 bucket to store content
+* Upload and manage files in S3
+* Create a CloudFront distribution
+* Deliver content using a CloudFront domain
+* Understand how caching improves performance
 
 ---
 
@@ -29,11 +31,11 @@ This simulates how real companies accelerate websites, media platforms, and stat
 ```
 User Browser
      │
-     │ Request image
+     │ Requests image
      ▼
-CloudFront Edge Location
+CloudFront (Edge Location)
      │
-     │ (Cached → Fast delivery)
+     │ If cached → delivered instantly
      │
      └── If not cached
            ▼
@@ -41,101 +43,88 @@ CloudFront Edge Location
         (Origin Storage)
 ```
 
-**Flow:**
+### Flow Explanation
 
-1. User requests content
-2. CloudFront checks nearest edge server
-3. If cached → delivered instantly
-4. If not cached → fetched from S3 and stored at edge
+1. A user requests an image
+2. CloudFront checks the nearest edge location
+3. If the image is cached → it is delivered immediately
+4. If not cached → CloudFront retrieves it from S3 and stores it for future requests
 
 ---
 
 ## ⚙️ Technical Steps Completed
 
-### 1️⃣ Created S3 Origin
+### 1️⃣ Created an S3 Bucket (Origin)
 
 * Created a private S3 bucket
-* Uploaded a test image
-* Verified direct access was blocked
+* Uploaded a test image file
+* Verified direct public access was blocked
 
-**Skill:** Secure storage configuration
+**Skill demonstrated:** Secure storage setup
 
 ---
 
-### 2️⃣ Created CloudFront Distribution
+### 2️⃣ Created a CloudFront Distribution
 
-* Selected S3 bucket as origin
-* Used default performance settings
-* Waited for distribution deployment
+* Selected the S3 bucket as the origin source
+* Used default CloudFront settings
+* Waited for deployment to complete
 
-**Skill:** CDN setup & origin integration
+**Skill demonstrated:** CDN configuration and origin integration
 
 ---
 
 ### 3️⃣ Delivered Content via CloudFront
 
-CloudFront generated a public delivery domain such as:
+CloudFront generated a public domain similar to:
 
 ```
 a1bc2d3ef45g.cloudfront.net
 ```
 
-This domain is used to serve files stored in S3.
+This domain is used to securely deliver files stored in S3.
 
 ---
 
-### 4️⃣ Tested CDN Delivery
+### 4️⃣ Tested CDN Performance
 
-Created a simple HTML test file:
+Observed behavior:
 
-```html
-<html>
-  <head>
-    <title>CloudFront Test</title>
-  </head>
-  <body>
-    <p>Testing image delivery via CDN</p>
-    <img src="https://YOUR-DOMAIN/YOUR-IMAGE.jpg">
-  </body>
-</html>
-```
+* First load → image fetched from S3
+* Next loads → delivered faster from the nearest edge location
 
-Observed:
-
-* First load → fetched from S3
-* Next loads → served faster via edge cache
-
-**Skill:** Understanding caching & performance behavior
+**Skill demonstrated:** Understanding caching and performance optimization
 
 ---
 
 ## 🧠 Cloud Concepts Learned
 
-* Content Delivery Networks (CDN)
-* Edge locations
-* Caching strategy
-* Origin-based architecture
-* Latency reduction
-* Secure storage + public delivery separation
+This project helped me understand:
+
+* What a CDN is and why it is used
+* How CloudFront reduces latency
+* How edge locations improve speed
+* How S3 works as an origin server
+* How caching improves user experience
 
 ---
 
 ## 🌍 Real-World Use Cases
 
-CloudFront is used by companies for:
+CloudFront is commonly used for:
 
 * Website acceleration
+* Image delivery for applications
 * Video streaming platforms
-* Image hosting
-* Global SaaS applications
-* Static site delivery
-* Software downloads
+* Static website hosting
+* Global content distribution
 
 This same architecture is used by:
 
-* E-commerce platforms
+* E-commerce websites
+* SaaS platforms
 * Media companies
-* Large global apps
+* High-traffic global applications
 
 ---
 
@@ -146,37 +135,44 @@ This same architecture is used by:
 
 ---
 
-## 💼 Why This Matters for Cloud Roles
+## 🏆 Skills Gained
 
-This project demonstrates practical experience with:
+* CDN setup and configuration
+* Origin and edge architecture understanding
+* Performance optimization basics
+* Secure content delivery design
 
-* Global content distribution
-* Performance optimization
-* CDN design principles
-* Secure origin architecture
+---
 
-It shows the ability to:
+## 💼 Why This Project Matters
 
-* Improve application speed
-* Design scalable delivery systems
-* Work with production-level AWS services
+This project shows hands-on experience with:
+
+* Real AWS infrastructure
+* Performance-focused architecture
+* Global content delivery systems
+* Core cloud networking concepts
+
+It demonstrates the ability to understand how companies deliver fast, scalable web content worldwide.
 
 ---
 
 ## 🚀 Future Improvements
 
-Planned enhancements:
+Planned next steps:
 
-* Add custom domain + HTTPS
+* Add custom domain with HTTPS
 * Integrate Route 53
-* Enable WAF protection
-* Tune caching policies
-* Host a full static website via CloudFront
+* Tune CloudFront caching policies
+* Add AWS WAF for protection
+* Host a full static website using S3 + CloudFront
 
 ---
 
 ## 👤 Author
 
 **GitHub:** CloudWthAlex
-**Path:** Cloud Engineer
-**Focus:** AWS • Networking • Performance • Infrastructure
+**Career Path:** Cloud Engineer
+**Focus Areas:** AWS • Networking • Performance • Infrastructure
+
+---
